@@ -25,7 +25,7 @@ export default function TaglineRotator() {
   const current = taglines[index];
 
   return (
-    <div className="relative min-h-[160px] max-w-[420px]" ref={containerRef}>
+    <div className="relative min-h-[120px] md:min-h-[160px] max-w-[420px]" ref={containerRef}>
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -33,7 +33,7 @@ export default function TaglineRotator() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-3xl md:text-4xl font-bold text-white leading-tight"
+          className="text-2xl md:text-4xl font-bold text-white leading-tight"
         >
           {current.text}
           <span className="relative inline-block">
