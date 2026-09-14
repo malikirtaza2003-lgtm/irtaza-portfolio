@@ -1,3 +1,4 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -24,3 +25,104 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.font-clash {
+  font-family: 'Clash Display', sans-serif;
+}
+
+html {
+  /* Native smooth scroll removed to prevent conflict with Lenis */
+}
+
+@keyframes cta69-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-scroll {
+  animation: cta69-marquee 30s linear infinite;
+  will-change: transform;
+}
+
+@keyframes liquid-blob {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+}
+
+@keyframes cursor-blink {
+  50% { opacity: 0; }
+}
+
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(8%, -6%) scale(1.08); }
+}
+
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(-10%, 8%) scale(1.12); }
+}
+
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1.05); }
+  50% { transform: translate(6%, 10%) scale(0.95); }
+}
+
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.72;
+  will-change: transform;
+}
+
+.aurora-blob-1 {
+  width: 60%;
+  height: 60%;
+  top: -12%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.85) 0%, rgba(59, 130, 246, 0.15) 45%, transparent 72%);
+  animation: aurora-drift-1 14s ease-in-out infinite;
+}
+
+.aurora-blob-2 {
+  width: 55%;
+  height: 55%;
+  bottom: -8%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(255, 214, 10, 0.55) 0%, rgba(255, 214, 10, 0.12) 45%, transparent 72%);
+  animation: aurora-drift-2 18s ease-in-out infinite;
+}
+
+.aurora-blob-3 {
+  width: 45%;
+  height: 45%;
+  top: 28%;
+  left: 28%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(139, 92, 246, 0.1) 45%, transparent 72%);
+  animation: aurora-drift-3 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none;
+  }
+  .marquee-scroll {
+    animation: none;
+  }
+}
+
