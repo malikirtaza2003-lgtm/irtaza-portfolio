@@ -78,7 +78,7 @@ export function TechCluster({ className = "" }: { className?: string }) {
     <div className={`relative items-center justify-center ${className}`} ref={containerRef}>
       
       {/* Main 1: Code Card */}
-      <div className="relative w-[280px] rounded-xl bg-[#141414]/95 border border-white/10 p-5 shadow-2xl z-10" ref={cardRef}>
+      <div className="relative w-full max-w-[280px] rounded-xl bg-[#141414]/95 border border-white/10 p-3.5 lg:p-5 shadow-2xl z-10" ref={cardRef}>
         {/* Window Controls */}
         <div className="flex gap-1.5 mb-4">
           <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
@@ -91,7 +91,7 @@ export function TechCluster({ className = "" }: { className?: string }) {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="font-mono text-xs sm:text-sm text-gray-300 leading-loose flex flex-col items-start"
+          className="font-mono text-[10px] lg:text-xs text-gray-300 leading-loose flex flex-col items-start"
         >
           <motion.div variants={lineVariants} className="overflow-hidden whitespace-nowrap">
             <span className="text-[#3B82F6]">const</span> build = () =&gt; {"{"}
