@@ -19,8 +19,17 @@ export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Disable browser scroll restoration so it always starts at top
+    if (typeof window !== "undefined") {
+      history.scrollRestoration = "manual";
+      // Immediately force top on mount (before preloader shows)
+      window.scrollTo(0, 0);
+    }
+
     // Reveal text for ~1.5s, hold, then slide up.
     const timer = setTimeout(() => {
+      // Scroll to absolute top before preloader exits
+      window.scrollTo({ top: 0, behavior: "instant" });
       setIsLoading(false);
     }, 2800); 
     return () => clearTimeout(timer);

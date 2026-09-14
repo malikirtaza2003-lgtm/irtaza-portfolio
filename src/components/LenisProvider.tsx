@@ -9,6 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Disable browser scroll restoration — always start at top
+    if (typeof window !== "undefined") {
+      history.scrollRestoration = "manual";
+    }
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
