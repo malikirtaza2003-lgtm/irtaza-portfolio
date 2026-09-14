@@ -49,29 +49,92 @@ const MyWork = () => {
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section
-      id="work"
-      ref={ref}
-      className="relative z-10 flex h-[280vh] w-screen flex-col items-center overflow-hidden rounded-t-[2.5rem] bg-black px-4 text-white md:rounded-t-[3.5rem]"
-    >
-      <div className="relative z-20 mt-28 flex w-fit max-w-2xl flex-col items-center gap-5 text-center md:mt-36">
-        <h2 className="font-jakarta-sans text-6xl font-medium tracking-[-0.04em] md:text-8xl">
-          My Work
-        </h2>
-        <p className="font-jakarta-sans max-w-lg text-lg font-medium text-white/60 md:text-xl">
-          Same commitment, carried all the way through to the last detail.
-        </p>
-      </div>
+    <>
+      {/* ── MOBILE LAYOUT (< md) ── */}
+      <section
+        id="work-mobile"
+        className="relative z-10 flex flex-col items-center overflow-hidden rounded-t-[2.5rem] bg-black px-5 py-24 text-white md:hidden"
+      >
+        <div className="mb-14 flex w-full flex-col items-center gap-4 text-center">
+          <h2 className="font-jakarta-sans text-5xl font-medium tracking-[-0.04em]">
+            My Work
+          </h2>
+          <p className="font-jakarta-sans max-w-sm text-base font-medium text-white/60">
+            Same commitment, carried all the way through to the last detail.
+          </p>
+        </div>
 
-      <LinePath pathLength={pathLength} points={projects.map((p) => p.point)} />
+        <div className="flex w-full flex-col gap-12">
+          {projects.map((project) => (
+            <motion.div
+              key={project.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden"
+            >
+              {/* Project Image */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
 
-      {projects.map((project) => (
-        <React.Fragment key={project.name}>
-          <ProjectCard project={project} />
-          <ProjectDetail project={project} />
-        </React.Fragment>
-      ))}
-    </section>
+              {/* Project Info */}
+              <div className="flex flex-col gap-3 px-5 pb-6">
+                <h3 className="font-jakarta-sans text-xl font-semibold text-white">
+                  {project.name}
+                </h3>
+                <p className="text-sm leading-snug text-white/60">
+                  {project.description}
+                </p>
+                <p className="text-sm leading-relaxed text-white/70">
+                  {project.detail}
+                </p>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 px-4 py-2 text-xs font-medium text-white/80 transition-colors duration-300 hover:border-blue-400 hover:bg-blue-400/10 hover:text-white"
+                >
+                  View project
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── DESKTOP LAYOUT (md+) ── original scroll-animated version */}
+      <section
+        id="work"
+        ref={ref}
+        className="relative z-10 hidden h-[280vh] w-screen flex-col items-center overflow-hidden rounded-t-[2.5rem] bg-black px-4 text-white md:flex md:rounded-t-[3.5rem]"
+      >
+        <div className="relative z-20 mt-28 flex w-fit max-w-2xl flex-col items-center gap-5 text-center md:mt-36">
+          <h2 className="font-jakarta-sans text-6xl font-medium tracking-[-0.04em] md:text-8xl">
+            My Work
+          </h2>
+          <p className="font-jakarta-sans max-w-lg text-lg font-medium text-white/60 md:text-xl">
+            Same commitment, carried all the way through to the last detail.
+          </p>
+        </div>
+
+        <LinePath pathLength={pathLength} points={projects.map((p) => p.point)} />
+
+        {projects.map((project) => (
+          <React.Fragment key={project.name}>
+            <ProjectCard project={project} />
+            <ProjectDetail project={project} />
+          </React.Fragment>
+        ))}
+      </section>
+    </>
   );
 };
 

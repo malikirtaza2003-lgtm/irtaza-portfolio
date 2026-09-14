@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-export function TechCluster() {
+export function TechCluster({ className = "" }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Track mouse position and lerped positions
@@ -75,7 +75,7 @@ export function TechCluster() {
   };
 
   return (
-    <div className="hidden lg:flex relative w-[320px] h-[320px] items-center justify-center" ref={containerRef}>
+    <div className={`relative items-center justify-center ${className}`} ref={containerRef}>
       
       {/* Main 1: Code Card */}
       <div className="relative w-[280px] rounded-xl bg-[#141414]/95 border border-white/10 p-5 shadow-2xl z-10" ref={cardRef}>
