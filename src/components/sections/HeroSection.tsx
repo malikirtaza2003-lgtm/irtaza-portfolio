@@ -18,7 +18,7 @@ export function HeroSection() {
           Stack: [TopBar] → [Tagline + CTA, full-width] → [Video | Code card row]
           Nothing overlaps, everything breathes.
       ── */}
-      <div className="flex lg:hidden absolute inset-0 flex-col z-10 pt-[72px] pb-12 px-4 gap-4">
+      <div className="flex lg:hidden absolute inset-0 flex-col z-10 pt-16 pb-10 px-4 gap-3">
 
         {/* Row 1: Tagline text — full width, no cramping */}
         <div className="flex-shrink-0">
